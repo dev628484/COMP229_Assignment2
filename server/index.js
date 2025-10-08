@@ -9,16 +9,19 @@ const connection = mongoose.connection;
 connection.on('error', console.error.bind(console, "MongoDB connection error: "));
 connection.once('open', () => { console.log('Connected to MongoDB'); });
 
-import homeRoutes from './routes/homeRoutes.js';
 import projectRoutes from './routes/project.js';
+import userRoutes from './routes/user.js';
 
 const app = express();
+
+app.use(express.json()); // Middleware to parse JSON bodies
 
 app.use(morgan('dev'));
 
 //Routes
-app.use('/', homeRoutes);
+
 app.use('/projects', projectRoutes);
+app.use('/users', userRoutes)
 
 
 app.listen(3000);   
