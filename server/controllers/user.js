@@ -1,4 +1,5 @@
 import UserModel from '../models/user.js';
+import generateToken from '../utils/jwt.js';
 
 // Create CRUD operations for User
 
@@ -30,7 +31,11 @@ export const createUser = async (req, res) => {
     try {
         const newUser = new UserModel(req.body);
         const savedUser = await newUser.save();
-        res.status(201).json(savedUser); // 201 HTTP status code for created
+
+        const token = generateToken(savedUser);
+
+
+        res.status(201).json({message: "User registered successfuly", user:savedUser, token}); // 201 HTTP status code for created
     } catch (error) {
         res.status(500).json({ message: error.message }); // 500 HTTP status code for server error
     }
@@ -84,7 +89,9 @@ export const loginUser = async (req, res) => {
             return res.status(401).json({ message: 'Invalid password' }); // 401 HTTP status code for unauthorized
         }
 
-        return res.status(200).json({ message: 'Login successful', user });
+        const token = generateToken(user)
+
+        return res.status(200).json({ message: 'Login successful', user, token });
     } catch (error) {
         res.status(500).json({ message: error.message }); // 500 HTTP status code for server error
     }
