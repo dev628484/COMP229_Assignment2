@@ -1,7 +1,5 @@
 import ProjectModel from '../models/project.js';
 
-// Create CRUD operations for Project
-
 // Get All Projects = Same as db.projects.find()
 export const getAllProjects = async (req, res) => {
     try {
