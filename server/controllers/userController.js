@@ -96,3 +96,13 @@ export const loginUser = async (req, res) => {
         res.status(500).json({ message: error.message }); // 500 HTTP status code for server error
     }
 }
+
+// Delete all
+export const deleteAllUsers = async (req, res) => {
+  try {
+    const result = await UserModel.deleteMany({});
+    res.status(200).json({ message: `${result.deletedCount} users deleted` });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

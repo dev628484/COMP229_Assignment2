@@ -5,6 +5,7 @@ import {
     createUser,
     updateUser,
     deleteUser,
+    deleteAllUsers
 } from '../controllers/userController.js'
 
 import authMiddleware from '../middleware/auth.js';
@@ -15,9 +16,10 @@ const router = express.Router();
 // HTTP Verbs for RESTful APIs GET, POST, PUT, DELETE
 router.get('/', authMiddleware, getAllUsers);
 router.get('/:id', authMiddleware, getUserById);
-router.post('/', createUser);
+router.post('/', authMiddleware, createUser);
 router.put('/:id', authMiddleware, updateUser);
+router.delete('/', authMiddleware, deleteAllUsers);
 router.delete('/:id', authMiddleware, deleteUser);
-router.delete('/',authMiddleware, deleteUser);
+
 
 export default router;

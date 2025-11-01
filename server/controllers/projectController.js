@@ -65,3 +65,13 @@ export const deleteProject = async (req, res) => {
         res.status(500).json({ message: error.message }); // 500 HTTP status code for server error
     }
 }
+
+// Delete all
+export const deleteAllProjects = async (req, res) => {
+  try {
+    const result = await ProjectModel.deleteMany({});
+    res.status(200).json({ message: `${result.deletedCount} projects deleted` });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

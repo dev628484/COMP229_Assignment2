@@ -29,16 +29,16 @@ app.use('/api/auth', authRoutes);
 // Protected test route
 app.get('/api/me', authMiddleware, (req, res) => {
   res.json({ user: req.user });
-});
+}); 
 
 
 // Base route
 app.get('/', (req, res) => {
-res.send('Welcome to My Portfolio application');
+    res.send('Welcome to My Portfolio application');
 });
 
 
 const PORT = process.env.PORT || 5000;
-connectDB(process.env.MONGODB_URI).then(() => {
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    connectDB(process.env.MONGODB_URI).then(() => {
+        app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });

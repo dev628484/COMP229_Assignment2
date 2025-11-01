@@ -45,7 +45,7 @@ export const updateContact = async (req, res) => {
             return res.status(404).json({ message: 'Project not found' }); // 404 HTTP status code for not found
         }
 
-        res.status(200).json(updatedProject);
+        res.status(200).json(updatedContact);
     } catch (error) {
        res.status(500).json({ message: error.message }); // 500 HTTP status code for server error
     }
@@ -65,3 +65,13 @@ export const deleteContact = async (req, res) => {
         res.status(500).json({ message: error.message }); // 500 HTTP status code for server error
     }
 }
+
+// Delete All
+export const deleteAllContacts = async (req, res) => {
+  try {
+    const result = await ContactModel.deleteMany({});
+    res.status(200).json({ message: `${result.deletedCount} contacts deleted` });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

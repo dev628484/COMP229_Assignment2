@@ -4,7 +4,8 @@ import {
     getQualificationById,
     updateQualification,
     deleteQualification,
-    createQualification
+    createQualification,
+    deleteAllQualifications
 } from '../controllers/qualificationController.js'
 
 import authMiddleware from '../middleware/auth.js';
@@ -17,7 +18,8 @@ router.get('/', authMiddleware, getAllQualifications);
 router.get('/:id', authMiddleware, getQualificationById);
 router.post('/', authMiddleware, createQualification);
 router.put('/:id', authMiddleware, updateQualification);
+router.delete('/', authMiddleware, deleteAllQualifications);
 router.delete('/:id', authMiddleware, deleteQualification);
-router.delete('/',authMiddleware, deleteQualification);
+
 
 export default router;

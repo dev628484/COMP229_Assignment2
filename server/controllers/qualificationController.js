@@ -17,7 +17,7 @@ export const getQualificationById = async (req, res) => {
         if (!qualification) {
             return res.status(404).json({ message: 'qualification not found' }); // 404 HTTP status code for not found
         }
-        res.status(200).json(project);
+        res.status(200).json(qualification);
     } catch (error) {
         res.status(500).json({ message: error.message }); // 500 HTTP status code for server error
     }
@@ -65,3 +65,13 @@ export const deleteQualification = async (req, res) => {
         res.status(500).json({ message: error.message }); // 500 HTTP status code for server error
     }
 }
+
+// Delete all
+export const deleteAllQualifications = async (req, res) => {
+  try {
+    const result = await QualificationModel.deleteMany({});
+    res.status(200).json({ message: `${result.deletedCount} qualifications deleted` });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
