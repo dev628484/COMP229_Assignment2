@@ -5,9 +5,9 @@ import {
     updateQualification,
     deleteQualification,
     createQualification
-} from '../controllers/qualification.js'
+} from '../controllers/qualificationController.js'
 
-import authMiddleware from '../middlewares/auth.js';
+import authMiddleware from '../middleware/auth.js';
 
 // Router /qualification
 const router = express.Router();

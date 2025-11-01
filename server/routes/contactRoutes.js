@@ -5,9 +5,9 @@ import {
     updateContact,
     deleteContact,
     createContact
-} from '../controllers/contact.js'
+} from '../controllers/contactController.js'
 
-import authMiddleware from '../middlewares/auth.js';
+import authMiddleware from '../middleware/auth.js';
 
 // Router /contacts
 const router = express.Router();

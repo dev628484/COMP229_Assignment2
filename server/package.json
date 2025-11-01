@@ -1,16 +1,17 @@
 {
-  "name": "week3-402",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
-  "author": "Thiago Castilho",
+  "author": "Dev Patel",
   "type": "module",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
